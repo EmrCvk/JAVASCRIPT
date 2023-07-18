@@ -20,17 +20,26 @@ function getname()
 
 
 
-var liste = document.querySelector("ul");
+var liste = document.getElementById("liste");
+var veri = document.getElementById("veri");
+var ekle = document.getElementById("ekle");
 
-var urun = document.querySelector("#veri")
-var ekle = document.querySelector("#ekle")
+ekle.addEventListener("click", function () {
+  var li = document.createElement("li");
+  li.textContent = veri.value;
+  liste.appendChild(li);
+  veri.value = "";
+});
 
-ekle.addEventListener("click",function(){
-    var li= document.createElement("li");
+var sil = document.getElementById("sil");
 
-    li.textContent=veri.value;
+sil.addEventListener("click", function () {
+  var liList = liste.getElementsByTagName("li");
+  var lastLi = liList[liList.length - 1];
 
-    liste.appendChild(li);
-    
-    veri.value="";
+  if (lastLi) {
+    liste.removeChild(lastLi);
+  } else {
+    console.error("List is empty. Nothing to delete.");
+  }
 });
