@@ -28,7 +28,8 @@ document.getElementById("list").addEventListener("click", function (event) {
 });
 
 document.getElementById("list").addEventListener("click", function (event) {
-  if (event.target.tagName === "LI") {
+  var li = document.getElementsByTagName("li")
+  if (event.target.tagName === "LI"|| li.contains.event.target) {
     event.target.classList.toggle("checked");
   }
 });

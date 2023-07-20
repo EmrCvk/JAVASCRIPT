@@ -7,7 +7,7 @@ ul {
   padding: 0;
 }
 
-ul li p {
+.text-inside-li {
   margin-left:  20px;
   margin-bottom: 0;
 }
@@ -50,6 +50,7 @@ ul li:hover {
 }
 
 .checked {
+
   background: #276678;
   color: #fff;
   text-decoration: line-through;
@@ -57,6 +58,7 @@ ul li:hover {
 }
 
 .checked::before {
+  margin-top: 5px;
   content: "";
   position: absolute;
   border-color: #fff;
