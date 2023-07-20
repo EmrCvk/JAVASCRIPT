@@ -22,10 +22,16 @@ ul li {
   -ms-user-select: none;
   user-select: none;
 }
-ul li .btn  {
-  display: flex;
-  justify-content: end;
-  
+.btn {
+ 
+  position: absolute;
+  right: 5px;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+.btn:hover {
+  background-color: #f78501;
+  color: white;
 }
 
 

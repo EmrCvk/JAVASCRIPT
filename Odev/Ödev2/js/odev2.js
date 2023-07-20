@@ -5,11 +5,23 @@ var gorev = document.getElementById("task");
 var ekle = document.getElementById("liveToastBtn");
 var li = document.querySelector("li ")
 
+var emptyValue = document.querySelector("#liveToastEmpty")
+var addedValue = document.querySelector("#liveToastAdded")
+
+
 
 
 
 
 ekle.addEventListener("click", function newElement () { //Listeye eleman ekler.
+  
+  if(gorev.value== "") {
+    $(document).ready(function(){ // Input bbos ise liveToastEmty toasterini calistir
+      $('#liveToastEmpty').toast('show');
+    });
+  }
+
+  else  {
   var li = document.createElement("li");
   li.textContent = gorev.value;
 
@@ -22,8 +34,15 @@ ekle.addEventListener("click", function newElement () { //Listeye eleman ekler.
   li.appendChild(deleteButton);
   list.appendChild(li);
 
+  $(document).ready(function(){  // Input bos degilse liveToastAdded toasterini calistir.
+    $('#liveToastAdded').toast('show');
+  });
+
   gorev.value = "";
+        }
 });
+
+
 
 
 
