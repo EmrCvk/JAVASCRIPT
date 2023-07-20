@@ -81,3 +81,61 @@ const menu = [
     desc: `Red bean paste dessert, serving with honey.`,
   },
 ];
+
+ menu1 = [
+  // Your menu items as provided in the question
+];
+
+const btnContainer = document.querySelector(".btn-container");
+const menuItems = document.querySelector(".section-center");
+
+// Get unique categories from the menu array
+const categories = ["All", ...new Set(menu1.map((item) => item.category))];
+
+// Generate category buttons
+const generateButtons = () => {
+  const categoryBtns = categories
+    .map((category) => `<button class="btn-item">${category}</button>`)
+    .join("");
+
+  btnContainer.innerHTML = categoryBtns;
+
+  const filterBtns = document.querySelectorAll(".btn-item");
+
+  // Filter menu items when a category button is clicked
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const category = btn.textContent;
+      const filteredMenu = category === "All" ? menu1 : menu1.filter((item) => item.category === category);
+      displayMenuItems(filteredMenu);
+    });
+  });
+};
+
+// Generate menu items
+const displayMenuItems = (menuList) => {
+  const menuHTML = menuList
+    .map((item) => {
+      return `
+        <div class="menu-items col-md-6 col-lg-4">
+          <img src="${item.img}" alt="${item.title}" class="photo" />
+          <div class="menu-info">
+            <div class="menu-title">
+              <h4>${item.title}</h4>
+              <h4 class="price">$${item.price}</h4>
+            </div>
+            <div class="menu-text">${item.desc}</div>
+          </div>
+        </div>
+      `;
+    })
+    .join("");
+
+  menuItems.innerHTML = menuHTML;
+};
+
+// Display all menu items on page load
+window.addEventListener("DOMContentLoaded", () => {
+  generateButtons();
+  displayMenuItems(menu);
+});
